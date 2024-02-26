@@ -6,15 +6,14 @@ import Circles from "../../public/assets/loc-circles.svg";
 import Rout from "../../public/assets/route-icon.svg";
 
 export default function Home() {
-  const { setShowSpin, setShowBtn, showBtn } = useUi();
+  const { setShowSpin } = useUi();
 
   const handleGetAlongClick = () => {
     setShowSpin(false); // Hide the spin and show drivers preview
-    setShowBtn(false);
   };
   return (
     <Layout>
-      <main className="pt-40 pb-10 px-3 flex flex-col gap-[220px]">
+      <main className="pt-40 pb-10 px-3 flex flex-col gap-[278px]">
         <section className="w-full flex items-center gap-6 px-4 py-[18px] rounded-lg bg-[#F2F2F2] border border-red-600">
           <Image src={Circles} alt="" />
 
@@ -41,14 +40,12 @@ export default function Home() {
           <Image src={Rout} alt="" />
         </section>
 
-        {showBtn && (
-          <button
-            className="w-[90%] self-center bg-[#F2F2F2] py-3 px-4 rounded-2xl text-xl text-[#717171] font-bold border border-red-600"
-            onClick={handleGetAlongClick}
-          >
-            Get Along
-          </button>
-        )}
+        <button
+          className="w-[90%] self-center bg-[#F2F2F2] py-3 px-4 rounded-2xl text-xl text-[#717171] font-bold border border-red-600"
+          onClick={handleGetAlongClick}
+        >
+          Get Along
+        </button>
       </main>
     </Layout>
   );

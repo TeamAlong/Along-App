@@ -6,16 +6,9 @@ import Seat from "../../../public/assets/seat.svg";
 import Car from "../../../public/assets/car.svg";
 
 export default function DriversPreview() {
-  const { setShowArriving } = useUi();
-
-  const handleClick = () => {
-    setShowArriving(true); // Show the Arriving component on click
-  };
-
-
   return (
     <main className="w-full flex flex-col gap-11 p-2.5 overflow-y-scroll pt-12 ">
-      <section onClick={handleClick} className=" relative flex flex-col gap-6 pt-10 rounded-2xl bg-[#F2F2F2] border border-red-600">
+      <section className=" relative flex flex-col gap-6 pt-10 rounded-2xl bg-[#F2F2F2] border border-red-600">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center bg-[#1C55A9] rounded-xl z-[10000]">
           <div className="flex items-center gap-2 px-4 py-2 border-b border-[#F2F2F2]">
             <Image src={Car} alt="car icon" />

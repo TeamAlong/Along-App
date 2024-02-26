@@ -41,14 +41,15 @@ export default function Home() {
           <Image src={Rout} alt="" />
         </section>
 
-        {showBtn && (
-          <button
-            className="w-[90%] self-center bg-[#F2F2F2] py-3 px-4 rounded-2xl text-xl text-[#717171] font-bold border border-red-600"
-            onClick={handleGetAlongClick}
-          >
-            Get Along
-          </button>
-        )}
+{showBtn && (
+
+        <button
+          className="w-[90%] self-center bg-[#F2F2F2] py-3 px-4 rounded-2xl text-xl text-[#717171] font-bold border border-red-600"
+          onClick={handleGetAlongClick}
+        >
+          Get Along
+        </button>
+)}
       </main>
     </Layout>
   );
