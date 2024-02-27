@@ -1,4 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+// import MapGL from "react-map-gl";
+// import "mapbox-gl/dist/mapbox-gl.css";
+import { GoogleMap, LoadScript } from "@react-google-maps/api";
 import Layout from "@/components/Layout";
 import Image from "next/image";
 import { useUi } from "@/context/UiContext/uiContext";
@@ -8,14 +11,76 @@ import Rout from "../../public/assets/route-icon.svg";
 export default function Home() {
   const { setShowSpin, setShowBtn, showBtn } = useUi();
 
+  const [viewport, setViewport] = useState({
+    width: "100vw", 
+    height: "100vh", 
+    latitude: 0,
+    longitude: 0,
+    zoom: 14,
+  });
+
+  const containerStyle = {
+    width: "100vw",
+    height: "100vh",
+    position: "absolute", 
+    top: 0, 
+    left: 0, 
+    // zIndex: -1, 
+  };
+
+  useEffect(() => {
+    function success(position) {
+      setViewport((prevViewport) => ({
+        ...prevViewport,
+        latitude: position.coords.latitude,
+        longitude: position.coords.longitude,
+      }));
+      console.log("User's location:", position.coords);
+    }
+
+    function error(err) {
+      console.warn(`ERROR(${err.code}): ${err.message}`);
+    }
+
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(success, error, {
+        enableHighAccuracy: true,
+      });
+    } else {
+      console.log("Geolocation is not supported by this browser.");
+    }
+  }, []);
+
   const handleGetAlongClick = () => {
     setShowSpin(false); // Hide the spin and show drivers preview
     setShowBtn(false);
   };
+
   return (
     <Layout>
-      <main className="pt-40 pb-10 px-3 flex flex-col gap-[220px]">
-        <section className="w-full flex items-center gap-6 px-4 py-[18px] rounded-lg bg-[#F2F2F2] border border-red-600">
+      <main className="relative pt-40 pb-10 px-3 flex flex-col gap-[220px]">
+        {/* <div className="absolute top-0 left-0 right-0 bottom-0">
+          <MapGL
+            {...viewport}
+            onViewportChange={(nextViewport) => setViewport(nextViewport)}
+            mapStyle="mapbox://styles/mapbox/streets-v9"
+            mapboxApiAccessToken="pk.eyJ1IjoicHJlY2lvdXNvcml0cyIsImEiOiJjbHQ0OXV6N2IwMHU2MnFwaDRtcHZwcGJmIn0.K-95DIhVIZNtAfCgIJ8d7A"
+          />
+        </div> */}
+        <div className="absolute top-0 left-0 right-0 bottom-0">
+          <LoadScript googleMapsApiKey="AIzaSyAs1pIkGKW7Ex-huahARaHrzshbjMBhvME">
+            <GoogleMap
+              mapContainerStyle={containerStyle}
+              center={{ lat: viewport.latitude, lng: viewport.longitude }}
+              zoom={viewport.zoom}
+              onLoad={(map) => console.log("Google Map loaded:", map)}
+            >
+              {/* You can add markers or other components here */}
+            </GoogleMap>
+          </LoadScript>
+        </div>
+
+        <section className="z-10 w-full flex items-center gap-6 px-4 py-[18px] rounded-lg bg-[#F2F2F2]">
           <Image src={Circles} alt="" />
 
           <div className="w-full flex flex-col">
@@ -43,7 +108,7 @@ export default function Home() {
 
         {showBtn && (
           <button
-            className="w-[90%] self-center bg-[#F2F2F2] py-3 px-4 rounded-2xl text-xl text-[#717171] font-bold border border-red-600"
+            className="w-[90%] self-center bg-[#F2F2F2] py-3 px-4 rounded-2xl text-xl text-[#717171] font-bold z-10"
             onClick={handleGetAlongClick}
           >
             Get Along

@@ -18,7 +18,7 @@ body {
   font-family: "Inter", sans-serif;
   font-size: 1rem;
   font-weight: 500;
-  background-color: #f4f4f4;
+  /* background-color: #f4f4f4; */
   color: #3d3c3c;
   text-align: left;
   line-height: 1.5;
@@ -30,4 +30,9 @@ input::placeholder {
   font-size: 1rem;
   font-weight: 500;
   color: #3d3c3c;
+}
+
+.mapboxgl-map {
+  height: 400px; /* Fixed height */
+  width: 100%; /* Full width */
 }
