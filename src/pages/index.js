@@ -73,6 +73,7 @@ export default function Home() {
             </GoogleMap>
           </LoadScript>
         </div>
+        
         {showTicket ? (
           <Ticket />
         ) : (

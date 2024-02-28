@@ -3,12 +3,16 @@ import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 import Layout from "@/components/Layout";
 import Image from "next/image";
 import AcceptModal from "@/components/driver/Accept-modal";
+import MovementModal from "@/components/driver/Movement-modal";
+import RideComplete from "@/components/driver/RideComplete";
 import Circles from "../../../public/assets/loc-circles.svg";
 import Rout from "../../../public/assets/route-icon.svg";
 import Arrow from "../../../public/assets/arrow-right.svg";
 
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [showMovementModal, setShowMovementModal] = useState(false);
+  const [showRideComplete, setShowRideComplete] = useState(false);
 
   const [viewport, setViewport] = useState({
     width: "100vw",
@@ -49,6 +53,17 @@ export default function Home() {
       console.log("Geolocation is not supported by this browser.");
     }
   }, []);
+
+  // When "Accept" is clicked in the AcceptModal, hide it and show the MovementModal
+  const handleAccept = () => {
+    setIsModalOpen(false);
+    setShowMovementModal(true);
+  };
+
+  const handleMovementModalClick = () => {
+    setShowMovementModal(false); // Hide the MovementModal
+    setShowRideComplete(true); // Show the RideComplete component
+  };
 
   return (
     <Layout>
@@ -95,16 +110,22 @@ export default function Home() {
             <Image src={Rout} alt="" />
           </section>
 
-          {isModalOpen && <AcceptModal />}
+          {isModalOpen && <AcceptModal onAccept={handleAccept} />}
+          {showRideComplete && <RideComplete />}
         </section>
 
-        <button
-          className="w-[90%] fixed  bottom-16 flex items-center gap-5 justify-center self-center bg-[#F2F2F2] py-3 px-4 rounded-2xl text-xl text-[#717171] font-bold z-10"
-          onClick={() => setIsModalOpen(true)}
-        >
-          Select your route
-          <Image src={Arrow} alt="right arrow" />
-        </button>
+        {!showMovementModal && showRideComplete && (
+          <button
+            className="w-[90%] fixed  bottom-16 flex items-center gap-5 justify-center self-center bg-[#F2F2F2] py-3 px-4 rounded-2xl text-xl text-[#717171] font-bold z-10"
+            onClick={() => setIsModalOpen(true)}
+          >
+            Select your route
+            <Image src={Arrow} alt="right arrow" />
+          </button>
+        )}
+        {showMovementModal && (
+          <MovementModal onSectionClick={handleMovementModalClick} />
+        )}
       </main>
     </Layout>
   );
