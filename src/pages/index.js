@@ -3,6 +3,7 @@ import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 import Layout from "@/components/Layout";
 import Image from "next/image";
 import { useUi } from "@/context/UiContext/uiContext";
+import { useTrip } from "@/context/TripContext/TripContext";
 import Ticket from "@/components/user/Ticket";
 import Circles from "../../public/assets/loc-circles.svg";
 import Rout from "../../public/assets/route-icon.svg";
@@ -10,6 +11,7 @@ import Rout from "../../public/assets/route-icon.svg";
 export default function Home() {
   const { setShowSpin, setShowBtn, showBtn, showTicket, setShowTicket } =
     useUi();
+  const { setUserLocation } = useTrip();
 
   const [viewport, setViewport] = useState({
     width: "100vw",
@@ -49,6 +51,39 @@ export default function Home() {
     } else {
       console.log("Geolocation is not supported by this browser.");
     }
+
+    const intervalId = setInterval(() => {
+      // Increment latitude and longitude every 5 seconds
+      setViewport((prevViewport) => {
+        const newLatitude = prevViewport.latitude + 0.0001; // Simulated increment for latitude
+        const newLongitude = prevViewport.longitude + 0.0001; // Simulated increment for longitude
+
+        // Update the viewport with the new location
+        const newViewport = {
+          ...prevViewport,
+          latitude: newLatitude,
+          longitude: newLongitude,
+        };
+
+        // Log the updated location
+        console.log(
+          `Updated Location: Latitude: ${newLatitude}, Longitude: ${newLongitude}`
+        );
+
+        // Update location in the global context
+        setUserLocation({ latitude: newLatitude, longitude: newLongitude });
+
+        // Log confirmation that the global context was updated
+        console.log("Global context updated with new location.");
+
+        return newViewport;
+      });
+    }, 5000);
+
+    return () => {
+      console.log("Clearing location update interval.");
+      clearInterval(intervalId); // Clear the interval when the component unmounts
+    };
   }, []);
 
   const handleGetAlongClick = () => {
@@ -73,7 +108,7 @@ export default function Home() {
             </GoogleMap>
           </LoadScript>
         </div>
-        
+
         {showTicket ? (
           <Ticket />
         ) : (

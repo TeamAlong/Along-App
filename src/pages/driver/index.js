@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 import Layout from "@/components/Layout";
 import Image from "next/image";
+import { useTrip } from "@/context/TripContext/TripContext";
 import AcceptModal from "@/components/driver/Accept-modal";
 import MovementModal from "@/components/driver/Movement-modal";
 import RideComplete from "@/components/driver/RideComplete";
@@ -13,6 +14,8 @@ export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [showMovementModal, setShowMovementModal] = useState(false);
   const [showRideComplete, setShowRideComplete] = useState(false);
+
+  const { setDriverLocation } = useTrip();
 
   const [viewport, setViewport] = useState({
     width: "100vw",
@@ -38,7 +41,7 @@ export default function Home() {
         latitude: position.coords.latitude,
         longitude: position.coords.longitude,
       }));
-      console.log("User's location:", position.coords);
+      console.log("Drivers's location:", position.coords);
     }
 
     function error(err) {
@@ -52,6 +55,39 @@ export default function Home() {
     } else {
       console.log("Geolocation is not supported by this browser.");
     }
+
+    const intervalId = setInterval(() => {
+      // Increment latitude and longitude every 5 seconds
+      setViewport((prevViewport) => {
+        const newLatitude = prevViewport.latitude + 0.0001; // Simulated increment for latitude
+        const newLongitude = prevViewport.longitude + 0.0001; // Simulated increment for longitude
+
+        // Update the viewport with the new location
+        const newViewport = {
+          ...prevViewport,
+          latitude: newLatitude,
+          longitude: newLongitude,
+        };
+
+        // Log the updated location
+        console.log(
+          `Updated Location: Latitude: ${newLatitude}, Longitude: ${newLongitude}`
+        );
+
+        // Update location in the global context
+        setDriverLocation({ latitude: newLatitude, longitude: newLongitude });
+
+        // Log confirmation that the global context was updated
+        console.log("Global context updated with new location.");
+
+        return newViewport;
+      });
+    }, 5000);
+
+    return () => {
+      console.log("Clearing location update interval.");
+      clearInterval(intervalId); // Clear the interval when the component unmounts
+    };
   }, []);
 
   // When "Accept" is clicked in the AcceptModal, hide it and show the MovementModal
