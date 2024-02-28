@@ -114,7 +114,7 @@ export default function Home() {
           {showRideComplete && <RideComplete />}
         </section>
 
-        {!showMovementModal && showRideComplete && (
+        {!showMovementModal && !showRideComplete && (
           <button
             className="w-[90%] fixed  bottom-16 flex items-center gap-5 justify-center self-center bg-[#F2F2F2] py-3 px-4 rounded-2xl text-xl text-[#717171] font-bold z-10"
             onClick={() => setIsModalOpen(true)}
