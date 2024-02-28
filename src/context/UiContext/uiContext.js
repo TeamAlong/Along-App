@@ -8,6 +8,7 @@ export const UiProvider = ({ children }) => {
   const [showSpin, setShowSpin] = useState(true);
   const [showBtn, setShowBtn] = useState(true);
   const [showArriving, setShowArriving] = useState(false);
+  const [showTicket, setShowTicket] = useState(false);
 
   return (
     <UiContext.Provider
@@ -18,6 +19,8 @@ export const UiProvider = ({ children }) => {
         showBtn,
         showArriving,
         setShowArriving,
+        showTicket,
+        setShowTicket,
       }}
     >
       {children}

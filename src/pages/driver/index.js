@@ -2,14 +2,13 @@ import { useState, useEffect } from "react";
 import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 import Layout from "@/components/Layout";
 import Image from "next/image";
-import { useUi } from "@/context/UiContext/uiContext";
-import Ticket from "@/components/user/Ticket";
-import Circles from "../../public/assets/loc-circles.svg";
-import Rout from "../../public/assets/route-icon.svg";
+import AcceptModal from "@/components/driver/Accept-modal";
+import Circles from "../../../public/assets/loc-circles.svg";
+import Rout from "../../../public/assets/route-icon.svg";
+import Arrow from "../../../public/assets/arrow-right.svg";
 
 export default function Home() {
-  const { setShowSpin, setShowBtn, showBtn, showTicket, setShowTicket } =
-    useUi();
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const [viewport, setViewport] = useState({
     width: "100vw",
@@ -51,14 +50,9 @@ export default function Home() {
     }
   }, []);
 
-  const handleGetAlongClick = () => {
-    setShowSpin(false); // Hide the spin and show drivers preview
-    setShowBtn(false);
-  };
-
   return (
     <Layout>
-      <main className="relative pt-40 pb-10 px-3 flex flex-col items-center gap-[220px]">
+      <main className="relative pt-40 pb-10 px-3 h-full flex flex-col items-center ">
         <div className="absolute top-0 left-0 right-0 bottom-0">
           <LoadScript googleMapsApiKey="AIzaSyAs1pIkGKW7Ex-huahARaHrzshbjMBhvME">
             <GoogleMap
@@ -73,9 +67,8 @@ export default function Home() {
             </GoogleMap>
           </LoadScript>
         </div>
-        {showTicket ? (
-          <Ticket />
-        ) : (
+
+        <section className="w-full flex flex-col items-center gap-[80px] z-10 px-4">
           <section className="z-10 w-full flex items-center gap-6 px-4 py-[18px] rounded-lg bg-[#F2F2F2]">
             <Image src={Circles} alt="" />
 
@@ -101,16 +94,17 @@ export default function Home() {
 
             <Image src={Rout} alt="" />
           </section>
-        )}
 
-        {showBtn && (
-          <button
-            className="w-[90%] self-center bg-[#F2F2F2] py-3 px-4 rounded-2xl text-xl text-[#717171] font-bold z-10"
-            onClick={handleGetAlongClick}
-          >
-            Get Along
-          </button>
-        )}
+          {isModalOpen && <AcceptModal />}
+        </section>
+
+        <button
+          className="w-[90%] fixed  bottom-16 flex items-center gap-5 justify-center self-center bg-[#F2F2F2] py-3 px-4 rounded-2xl text-xl text-[#717171] font-bold z-10"
+          onClick={() => setIsModalOpen(true)}
+        >
+          Select your route
+          <Image src={Arrow} alt="right arrow" />
+        </button>
       </main>
     </Layout>
   );

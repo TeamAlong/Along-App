@@ -1,8 +1,10 @@
 import Head from "next/head";
+import { useRouter } from "next/router";
 import Footer from "./Footer";
 import Navbar from "./Navbar";
 
 export default function Layout({ title, keywords, description, children }) {
+  const router = useRouter();
   return (
     <div className="flex flex-col min-h-screen">
       <Head>
@@ -15,7 +17,7 @@ export default function Layout({ title, keywords, description, children }) {
 
       <div className="flex-grow">{children}</div>
 
-      <Footer />
+      {!router.pathname.includes("/driver") && <Footer />}
     </div>
   );
 }
