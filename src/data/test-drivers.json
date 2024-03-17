@@ -1,0 +1,266 @@
+[{
+  "_id": {
+    "$oid": "65de3b58d7c5a4dba6f8db75"
+  },
+  "Name": "Johnson",
+  "Email": "kristywalker@example.net",
+  "Number": "001-972-760-1596x445",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      -36.38,
+      83.04
+    ]
+  },
+  "name": "NULL",
+  "category": "bus stop",
+  "PlateNumber": 9738,
+  "Capacity": 36
+},
+{
+  "_id": {
+    "$oid": "65de3b58d7c5a4dba6f8db76"
+  },
+  "Name": "Lamb",
+  "Email": "mike41@example.com",
+  "Number": "8595768480",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      -2.43,
+      144.86
+    ]
+  },
+  "name": "NULL",
+  "category": "bus stop",
+  "PlateNumber": 7941,
+  "Capacity": 38
+},
+{
+  "_id": {
+    "$oid": "65de3b58d7c5a4dba6f8db77"
+  },
+  "Name": "Barr",
+  "Email": "ocollins@example.net",
+  "Number": "261.857.9198",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      16.12,
+      -83.4
+    ]
+  },
+  "name": "NULL",
+  "category": "bus stop",
+  "PlateNumber": 2136,
+  "Capacity": 41
+},
+{
+  "_id": {
+    "$oid": "65de3b58d7c5a4dba6f8db78"
+  },
+  "Name": "Guerra",
+  "Email": "sbrady@example.org",
+  "Number": "(740)201-2684x6530",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      6.46,
+      173.32
+    ]
+  },
+  "name": "NULL",
+  "category": "bus stop",
+  "PlateNumber": 1798,
+  "Capacity": 21
+},
+{
+  "_id": {
+    "$oid": "65de3b58d7c5a4dba6f8db79"
+  },
+  "Name": "Tate",
+  "Email": "ythompson@example.org",
+  "Number": "+1-833-769-6765x094",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      72.38,
+      115.82
+    ]
+  },
+  "name": "NULL",
+  "category": "bus stop",
+  "PlateNumber": 3209,
+  "Capacity": 13
+},
+{
+  "_id": {
+    "$oid": "65de3b58d7c5a4dba6f8db7a"
+  },
+  "Name": "Townsend",
+  "Email": "rosborn@example.com",
+  "Number": "001-508-794-0657x85621",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      10.38,
+      45.35
+    ]
+  },
+  "name": "NULL",
+  "category": "bus stop",
+  "PlateNumber": 6664,
+  "Capacity": 22
+},
+{
+  "_id": {
+    "$oid": "65de3b58d7c5a4dba6f8db7b"
+  },
+  "Name": "Bryant",
+  "Email": "simsbonnie@example.org",
+  "Number": "001-399-467-5614x7176",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      -49.86,
+      -134.53
+    ]
+  },
+  "name": "NULL",
+  "category": "bus stop",
+  "PlateNumber": 4854,
+  "Capacity": 24
+},
+{
+  "_id": {
+    "$oid": "65de3b58d7c5a4dba6f8db7c"
+  },
+  "Name": "Hicks",
+  "Email": "emily85@example.net",
+  "Number": "273.809.8146x388",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      71.92,
+      173.69
+    ]
+  },
+  "name": "NULL",
+  "category": "bus stop",
+  "PlateNumber": 3437,
+  "Capacity": 33
+},
+{
+  "_id": {
+    "$oid": "65de3b58d7c5a4dba6f8db7d"
+  },
+  "Name": "Miller",
+  "Email": "ztaylor@example.org",
+  "Number": "710-886-3855",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      8.59,
+      36.54
+    ]
+  },
+  "name": "NULL",
+  "category": "bus stop",
+  "PlateNumber": 6668,
+  "Capacity": 29
+},
+{
+  "_id": {
+    "$oid": "65de3b58d7c5a4dba6f8db7e"
+  },
+  "Name": "Hoffman",
+  "Email": "ahurley@example.com",
+  "Number": "+1-781-943-2588x708",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      17.93,
+      -134.11
+    ]
+  },
+  "name": "NULL",
+  "category": "bus stop",
+  "PlateNumber": 2649,
+  "Capacity": 15
+},
+{
+  "_id": {
+    "$oid": "65de3b58d7c5a4dba6f8db7f"
+  },
+  "Name": "Meza",
+  "Email": "bflores@example.net",
+  "Number": "(379)354-8839x75812",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      -52.15,
+      -89.4
+    ]
+  },
+  "name": "NULL",
+  "category": "bus stop",
+  "PlateNumber": 7759,
+  "Capacity": 46
+},
+{
+  "_id": {
+    "$oid": "65de3b58d7c5a4dba6f8db80"
+  },
+  "Name": "Gregory",
+  "Email": "jessicawest@example.org",
+  "Number": "5357215945",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      -56.33,
+      -141.15
+    ]
+  },
+  "name": "NULL",
+  "category": "bus stop",
+  "PlateNumber": 7915,
+  "Capacity": 45
+},
+{
+  "_id": {
+    "$oid": "65de3b58d7c5a4dba6f8db81"
+  },
+  "Name": "Wilson",
+  "Email": "tony17@example.org",
+  "Number": "(683)424-5625x66004",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      74.09,
+      90.72
+    ]
+  },
+  "name": "NULL",
+  "category": "bus stop",
+  "PlateNumber": 7081,
+  "Capacity": 45
+},
+{
+  "_id": {
+    "$oid": "65de3b58d7c5a4dba6f8db82"
+  },
+  "Name": "Wright",
+  "Email": "bondkelly@example.org",
+  "Number": "(336)937-4225x420",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      20.2,
+      83.33
+    ]
+  },
+  "name": "NULL",
+  "category": "bus stop",
+  "PlateNumber": 9634,
+  "Capacity": 49
+}]
