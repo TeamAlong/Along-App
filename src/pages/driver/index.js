@@ -15,7 +15,7 @@ export default function Home() {
     height: "100vh",
     latitude: 0,
     longitude: 0,
-    zoom: 14,
+    zoom: 16,
   });
 
   const containerStyle = {
@@ -54,7 +54,7 @@ export default function Home() {
     <Layout>
       <main className="relative pt-40 pb-10 px-3 h-full flex flex-col items-center ">
         <div className="absolute top-0 left-0 right-0 bottom-0">
-          <LoadScript googleMapsApiKey="AIzaSyAs1pIkGKW7Ex-huahARaHrzshbjMBhvME">
+          <LoadScript googleMapsApiKey={process.env.NEXT_PUBLIC_MAPS_API_KEY}>
             <GoogleMap
               mapContainerStyle={containerStyle}
               center={{ lat: viewport.latitude, lng: viewport.longitude }}
@@ -75,11 +75,11 @@ export default function Home() {
             <div className="w-full flex flex-col">
               <div className="flex flex-col gap-2 items-start border-b border-[#7E7E7E] pb-3">
                 <p className="text-xs text-[#7E7E7E]">From</p>
-                <input
+                {/* <input
                   className="w-full h-full bg-transparent border-none outline-none"
                   type="text"
                   placeholder="Your location"
-                />
+                /> */}
               </div>
 
               <div className="flex flex-col gap-2 items-start pt-3 ">

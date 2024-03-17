@@ -1,8 +1,12 @@
 import { useState, useEffect } from "react";
 import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
+import GooglePlacesAutocomplete from "react-google-places-autocomplete";
 import Layout from "@/components/Layout";
+import LocationInput from "@/components/LocationInput";
 import Image from "next/image";
 import { useUi } from "@/context/UiContext/uiContext";
+import { useFrom } from "@/context/LocationContext/FromContext";
+import { useDestination } from "@/context/LocationContext/DestinationContext";
 import Ticket from "@/components/user/Ticket";
 import Circles from "../../public/assets/loc-circles.svg";
 import Rout from "../../public/assets/route-icon.svg";
@@ -11,12 +15,18 @@ export default function Home() {
   const { setShowSpin, setShowBtn, showBtn, showTicket, setShowTicket } =
     useUi();
 
+    const { source, setSource } = useFrom();
+    const { destination, setDestination } = useDestination();
+
+  const [location, setLocation] = useState(null);
+  // const [destination, setDestination] = useState(null);
+
   const [viewport, setViewport] = useState({
     width: "100vw",
     height: "100vh",
     latitude: 0,
     longitude: 0,
-    zoom: 14,
+    zoom: 16,
   });
 
   const containerStyle = {
@@ -51,6 +61,14 @@ export default function Home() {
     }
   }, []);
 
+  useEffect(() => {
+    if(source) {
+      console.log("source", source);
+      console.log("destination", destination);
+    }
+
+  }, [source, destination])
+
   const handleGetAlongClick = () => {
     setShowSpin(false); // Hide the spin and show drivers preview
     setShowBtn(false);
@@ -58,9 +76,9 @@ export default function Home() {
 
   return (
     <Layout>
-      <main className="relative pt-40 pb-10 px-3 flex flex-col items-center gap-[220px]">
+      <main className="relative pt-20 pb-10 px-3 flex flex-col items-center gap-[220px]">
         <div className="absolute top-0 left-0 right-0 bottom-0">
-          <LoadScript googleMapsApiKey="AIzaSyAs1pIkGKW7Ex-huahARaHrzshbjMBhvME">
+          <LoadScript googleMapsApiKey={process.env.NEXT_PUBLIC_MAPS_API_KEY}>
             <GoogleMap
               mapContainerStyle={containerStyle}
               center={{ lat: viewport.latitude, lng: viewport.longitude }}
@@ -80,23 +98,21 @@ export default function Home() {
             <Image src={Circles} alt="" />
 
             <div className="w-full flex flex-col">
-              <div className="flex flex-col gap-2 items-start border-b border-[#7E7E7E] pb-3">
-                <p className="text-xs text-[#7E7E7E]">From</p>
-                <input
-                  className="w-full h-full bg-transparent border-none outline-none"
-                  type="text"
-                  placeholder="Your location"
-                />
-              </div>
+              <LocationInput
+                label="From"
+                value={location}
+                onChange={setLocation}
+                placeholder="Your location"
+                type="source" 
+              />
 
-              <div className="flex flex-col gap-2 items-start pt-3 ">
-                <p className="text-xs text-[#7E7E7E]">To</p>
-                <input
-                  className="w-full h-full bg-transparent border-none outline-none"
-                  type="text"
-                  placeholder="Wuse market"
-                />
-              </div>
+              <LocationInput
+                label="To"
+                value={destination}
+                onChange={setDestination}
+                placeholder="Destination"
+                type="destination"
+              />
             </div>
 
             <Image src={Rout} alt="" />
