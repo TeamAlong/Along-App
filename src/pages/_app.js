@@ -9,13 +9,14 @@ import { TripProvider } from "@/context/TripContext/TripContext";
 export default function App({ Component, pageProps }) {
   return (
     <UiProvider>
+     <TripProvider>
       <FromProvider>
         <DestinationProvider>
           <Component {...pageProps} />
         </DestinationProvider>
       </FromProvider>
-      <TripProvider>
-        <Component {...pageProps} />
+     
+       
       </TripProvider>
     </UiProvider>
   );
