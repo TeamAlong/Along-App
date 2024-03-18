@@ -44,7 +44,7 @@ const LocationInput = ({ label, value, onChange, placeholder, type }) => {
     <div className="flex flex-col gap-2 items-start border-b border-[#7E7E7E] pb-3">
       <p className="text-xs text-[#7E7E7E]">{label}</p>
       <GooglePlacesAutocomplete
-        apiKey={process.env.NEXT_PUBLIC_GOOGLE_API_KEY}
+        // apiKey={process.env.NEXT_PUBLIC_GOOGLE_API_KEY}
         selectProps={{
           value,
           onChange: (place) => {
