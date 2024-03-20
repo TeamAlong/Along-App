@@ -1,0 +1,46 @@
+{
+  "name": "along",
+  "version": "1.0.0",
+  "description": "along_backend",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xris003/along.git"
+  },
+  "author": "xris003",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xris003/along/issues"
+  },
+  "homepage": "https://github.com/xris003/along#readme",
+  "dependencies": {
+    "@babel/polyfill": "^7.12.1",
+    "axios": "^1.4.0",
+    "bcryptjs": "^2.4.3",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.17.3",
+    "express-mongo-sanitize": "^2.2.0",
+    "express-rate-limit": "^6.8.0",
+    "geolocation": "^0.2.0",
+    "helmet": "^7.0.0",
+    "hpp": "^0.2.3",
+    "html-to-text": "^9.0.5",
+    "jsonwebtoken": "^9.0.1",
+    "mongoose": "^5.13.16",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.5-lts.1",
+    "node-geolocation": "^1.15.14",
+    "nodemailer": "^6.9.4",
+    "nodemon": "^3.1.0",
+    "sharp": "^0.32.5",
+    "slugify": "^1.6.6",
+    "validator": "^13.9.0",
+    "xss-clean": "^0.1.4"
+  }
+}
