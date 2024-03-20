@@ -29,7 +29,7 @@ exports.getDriversWithin = catchAsync(async (req, res, next) => {
       $near: {
         $geometry: {
           type: "Point",
-          coordinates: [lng, lat],
+          coordinates: [lat, lng],
         },
         $maxDistance: radius,
         $minDistance: 10,
