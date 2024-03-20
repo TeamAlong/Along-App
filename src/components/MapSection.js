@@ -17,72 +17,7 @@ const containerStyle = {
   zoom: 0,
 };
 
-export default function MapSection() {
-  // const { source, setSource } = useFrom();
-  // const { destination, setDestination } = useDestination();
-  // //   const { isLoaded } = useJsApiLoader({
-  // //     id: "google-map-script",
-  // //     googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_API_KEY,
-  // //   });
-
-  // const [center, setCenter] = useState({
-  //   lat: -3.745,
-  //   lng: -38.523,
-  // });
-
-  // const [map, setMap] = useState(null);
-  // const [directionRoutePoints, setDirectionRoutePoints] = useState([]);
-
-  // useEffect(() => {
-  //   if (source && map) {
-  //     map.panTo({
-  //       lat: source.lat,
-  //       lng: source.lng,
-  //     });
-  //     setCenter({
-  //       lat: source.lat,
-  //       lng: source.lng,
-  //     });
-  //   }
-
-  //   if (source && destination) {
-  //     directionRoute();
-  //   }
-  // }, [source]);
-
-  // useEffect(() => {
-  //   if (destination && map) {
-  //     setCenter({
-  //       lat: destination.lat,
-  //       lng: destination.lng,
-  //     });
-  //   }
-
-  //   if (source && destination) {
-  //     directionRoute();
-  //   }
-  // }, [destination]);
-
-  // const directionRoute = () => {
-  //   const DirectionService = new google.maps.DirectionsService();
-
-  //   DirectionService.route(
-  //     {
-  //       origin: { lat: source.lat, lng: source.lng },
-  //       destination: { lat: destination.lat, lng: destination.lng },
-  //       travelMode: google.maps.TravelMode.DRIVING,
-  //     },
-  //     (result, status) => {
-  //       if (status === google.maps.DirectionsStatus.OK) {
-  //         setDirectionRoutePoints(result);
-  //       } else {
-  //         console.error("DirectionsService error", status);
-  //       }
-  //     }
-  //   );
-  // };
-
-  // My input 
+export default function MapSection() {git 
   const {
     source,
     setSource
